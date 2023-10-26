@@ -1,0 +1,2 @@
+# wasteTokenprototype
+wasteTon
