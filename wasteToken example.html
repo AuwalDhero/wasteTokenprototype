@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WasteToken</title>
+
+<link rel="stylesheet" href="WasteToke.css">
+    <script src="script.js" ></script>
+<body>
+    <div id="background-container" style="background-image: url('img\ folder/all');">
+        <header>
+            <nav class="horizontal-menu">
+                <ul>
+                    <li><a href="waste-reporting.html">Home</a></li>
+                    <li><a href="token-generation.html">Token Generation</a></li>
+                    <li><a href="token-redemption.html">Token Redemption</a></li>
+                    <li><a href="waste-reporting.html">Waste Reporting</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        
+        <?php
+        // Simulated user data (replace with your actual user data)
+        $validUsername = 'demoUser';
+        $validPassword = 'demoPassword';
+        
+        // Check if the form is submitted
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Retrieve user inputs
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+        
+            // Validate the username and password (replace with database validation)
+            if ($username === $validUsername && $password === $validPassword) {
+                // Authentication successful
+                session_start();
+                $_SESSION['username'] = $username; // Store user data in a session
+                header('Location: dashboard.php'); // Redirect to a dashboard or welcome page
+                exit();
+            } else {
+                // Authentication failed
+                $errorMessage = 'Invalid username or password.';
+            }
+        }
+        ?>
+        
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Login</title>
+            <link rel="stylesheet" href="styles.css">
+        </head>
+        <body>
+            <div class="login-container">
+                <h2>Login</h2>
+                <form action="process-login.php" method="POST">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                    
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    
+                    <button type="submit">Login</button>
+                </form>
+                <?php if (isset($errorMessage)): ?>
+                    <p class="error-message"><?php echo $errorMessage; ?></p>
+                <?php endif; ?>
+            </div>
+    <h1>Waste Collection Platform</h1>
+    </header>
+    <main>
+    <section>
+    
+    <h2>Welcome</h2>
+    <p>WasteToken is a platform for waste collection. You can find the nearest waste collection point to you, generate tokens for your waste, redeem your tokens for rewards, and report waste that has been illegally dumped.
+        WasteToken is a new cryptocurrency that aims to help us reduce waste and create a more sustainable future. The token is designed to be used to incentivize people to reduce, reuse, and recycle. For example, businesses could offer discounts to customers who pay with WasteToken, or individuals could earn WasteToken for composting their food scraps or recycling their electronics.
+    </p>
+        <section>
+            <h2>Dear User, <span id="user-name">Guest</span>Auwal Yunusa</h2>
+            <p>Your Token Balance: <span id="token-balance">0</span> tokens</p>
+            <button onclick="generateTokens()">Generate Tokens</button>
+        </section>
+    
+        <p>WasteToken is still in its early stages, but it has the potential to make a real difference in the fight against waste. By using WasteToken, we can all help to create a cleaner, healthier planet for future generations.</p>
+    </section>
+    <section>
+        <h2>How to use WasteToken</h2>
+        <p>There are many ways to use WasteToken. You can:</p>
+        <img src="img folder/token1.webp" alt="">
+        <ul>
+            <li>Buy WasteToken from an exchange.</li>
+            <li>Mine WasteToken.</li>
+            <li>Earn WasteToken by reducing, reusing, and recycling.</li>
+            <li>Use WasteToken to purchase goods and services from businesses that accept it.</li>
+            <li>Support businesses that are committed to sustainability.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Get started with WasteToken</h2>
+        <p>To get started with WasteToken, you can:</p>
+        <img src="img folder/token2.jpg" alt="">
+        <ul>
+            <li>Create a WasteToken account.</li>
+            <li>Deposit funds into your account.</li>
+            <li>Start using WasteToken to reduce, reuse, and recycle.</li>
+            <li>Purchase goods and services from businesses that accept WasteToken.</li>
+            <li>Support businesses that are committed to sustainability.</li>
+        </ul>
+    </section>
+    
+    <section>
+    <h2>Wastepoint Navigation</h2>
+    <p>Click here to see a map of all of the waste collection points in your area.</p>
+    <a href="https://www.google.com/maps/place/Your+Location+Here">View on Google Maps</a>
+    </section>
+    <section>
+    <h2>Token Generation</h2>
+    <img src="img folder/token3.jpg" alt="">
+    <p>Click here to generate tokens for your waste.</p>
+    <a href="token-generation.html">Token Generation</a>
+    </section>
+    <section>
+    <h2>Token Redemption</h2>
+    <p>Click here to redeem your tokens for rewards.</p>
+    <a href="">Token Redemption</a>
+    </section>
+    <section>
+    <h2>Waste Reporting</h2>
+    <p>Click here to report waste that has been illegally dumped.</p>
+    <a href="waste-reporting.html">Waste Reporting</a>
+    </section>
+    </main>
+    <footer>
+    <p>Copyright &copy; 2023 Waste Collection Platform</p>
+    </footer>
+        </div>
+    
+</body>
+
+
+</html>
+

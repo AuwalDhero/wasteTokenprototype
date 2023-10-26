@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Token Redemption</title>
+    <style>
+        /* Apply the styles to the entire body */
+        body {
+            background-color: aquamarine;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Center the header */
+        header {
+            margin-top: 20px;
+        }
+
+        /* Center the main content */
+        main {
+            padding: 20px;
+        }
+
+        /* Center the form and its elements */
+        #redemption-form {
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        label,
+        input,
+        button {
+            display: block;
+            margin-bottom: 10px;
+        
+        }
+
+        /* Center the redemption result */
+        #redemption-result {
+            display: none;
+            margin-top: 20px;
+        }
+        section button {
+            margin: 0 auto;
+        }
+        .horizontal-menu ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            background-color: aquamarine;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20; /* Center vertically */
+        }
+
+        .horizontal-menu li {
+            margin: 10px;
+            text-align: center;
+            border: 2px solid #333;
+            border-radius: 50%; /* Make it circular */
+            width: auto; /* Adjust the width as needed */
+            height: 60%; /* Adjust the height as needed */
+            line-height: 60%; /* Center text vertically */
+        }
+
+        .horizontal-menu a {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="horizontal-menu">
+            <ul>
+                <li><a href="wasteToken example.html">Home</a></li>
+                <li><a href="token-generation.html">Token Generation</a></li>
+                <li><a href="token-redemption.html">Token Redemption</a></li>
+                <li><a href="waste-reporting.html">Waste Reporting</a></li>
+            </ul>
+        </nav>
+    </header>
+    </head>
+    <body>
+    <header>
+        <h1>Token Redemption</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Redeem Tokens</h2>
+            <form id="redemption-form">
+                <label for="tokens-to-redeem">Tokens to Redeem:</label>
+                <input type="number" id="tokens-to-redeem" name="tokens-to-redeem" required>
+                <button type="button" id="redeem-button">Redeem</button>
+            </form>
+            <div id="redemption-result">
+                <p>Redemption status: <span id="redemption-status"></span></p>
+            </div>
+        </section>
+        <section>
+            <h2>Redeem Options</h2>
+            <p>Redeem one bag of rice for 20,000 tokens</p>
+            <button type="button" id="rice-redemption-button">Redeem Rice</button>
+            <p>Redeem a recharge card with tokens</p>
+            <button type="button" id="recharge-card-redemption-button">Redeem Recharge Card</button>
+            <p>Redeem housing equipment with your tokens. Call this number: 08063797962</p>
+            <p>Redeem for course registration</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Waste Collection Platform</p>
+    </footer>
+    <script>
+        document.getElementById("redeem-button").addEventListener("click", function() {
+            var tokensToRedeem = parseInt(document.getElementById("tokens-to-redeem").value);
+            if (!isNaN(tokensToRedeem) && tokensToRedeem > 0) {
+                // Simulate a redemption request and display a message.
+                var redemptionStatus = tokensToRedeem >= 20000 ? "Redeemed successfully" : "Insufficient tokens";
+                document.getElementById("redemption-status").textContent = redemptionStatus;
+                document.getElementById("redemption-result").style.display = "block";
+            }
+        });
+
+        document.getElementById("rice-redemption-button").addEventListener("click", function() {
+            // Simulate a rice redemption request and display a message.
+            var redemptionStatus = "Redeemed 1 bag of rice";
+            document.getElementById("redemption-status").textContent = redemptionStatus;
+            document.getElementById("redemption-result").style.display = "block";
+        });
+
+        document.getElementById("recharge-card-redemption-button").addEventListener("click", function() {
+            // Simulate a recharge card redemption request and display a message.
+            var redemptionStatus = "Redeemed a recharge card";
+            document.getElementById("redemption-status").textContent = redemptionStatus;
+            document.getElementById("redemption-result").style.display = "block";
+        });
+    </script>
+</body>
+</html>

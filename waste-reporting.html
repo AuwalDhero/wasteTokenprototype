@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Waste Reporting</title>
+    <header>
+        <nav class="horizontal-menu">
+            <ul>
+                <li><a href="wasteToken example.html">Home</a></li>
+                <li><a href="token-generation.html">Token Generation</a></li>
+                <li><a href="token-redemption.html">Token Redemption</a></li>
+                <li><a href="waste-reporting.html">Waste Reporting</a></li>
+            </ul>
+        </nav>
+    </header>
+    <style>
+body {
+    background-image: url("img/folfer/auwalh.jpg");
+    background-size: cover; /* Adjust this as needed to control image sizing */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keeps the background image fixed as you scroll */
+  /* You can also set additional properties like background-position and background-color if needed */
+    color: rgb(19, 17, 17); /* Text color for better readability */
+
+  background-color:aquamarine;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+.horizontal-menu ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+
+        .horizontal-menu li {
+            margin: 10px;
+            text-align: center;
+            border: 2px solid #333;
+            border-radius: 50%; /* Make it circular */
+            width: auto; /* Adjust the width as needed */
+            height: 60px; /* Adjust the height as needed */
+            line-height: 60px; /* Center text vertically */
+        }
+
+        .horizontal-menu a {
+            text-decoration: none;
+            color: black;
+        }
+
+/* Center the header */
+header {
+  margin-top: 20px;
+}
+
+/* Center the main content */
+main {
+  padding: 20px;
+}
+
+/* Center the form and its elements */
+#report-form {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+label,
+select,
+input,
+textarea,
+button {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%; /* Make form elements 100% width */
+}
+
+/* Center the report status */
+#report-status {
+  display: none;
+  margin-top: 20px;
+}
+.horizontal-menu ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            background-color: aquamarine;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20dvh /* Center vertically */
+        }
+.horizontal-menu li {
+            margin: 20px;
+            text-align: center;
+            border: 2px solid #333;
+            border-radius: 70%; /* Make it circular */
+            width: auto; /* Adjust the width as needed */
+            height: 60px; /* Adjust the height as needed */
+            line-height: 60px; /* Center text vertically */
+        }
+.horizontal-menu a {
+            text-decoration: none;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Waste Reporting</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Report Waste</h2>
+            <form id="report-form">
+                <label for="waste-type">Waste Type:</label>
+                <select id="waste-type" name="waste-type" required>
+                    <option value="plastic">Plastic</option>
+                    <option value="paper">Paper</option>
+                    <option value="metal">Metal</option>
+                </select>
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+                <button type="button" id="report-button">Report</button>
+            </form>
+            <div id="report-status" style="display: none;">
+                <p>Report status: <span id="report-message"></span></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Waste Collection Platform</p>
+    </footer>
+    <script>
+        document.getElementById("report-button").addEventListener("click", function() {
+            var wasteType = document.getElementById("waste-type").value;
+            var location = document.getElementById("location").value;
+            var description = document.getElementById("description").value;
+            if (wasteType && location && description) {
+                fetch("/report-waste", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ wasteType, location, description }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("report-message").textContent = data.message;
+                 document.getElementById("report-status").style.display = "block";
+                })
+                .catch(error => console.error(error));
+            }
+        });
+    </script>
+</body>
+</html>
